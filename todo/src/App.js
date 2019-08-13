@@ -1,13 +1,14 @@
-import React from "react";
-import Todo from "./components/Todo";
-import TodoForm from "./components/TodoForm";
+import React, { useReducer } from "react";
+import { initialState, todoReducer } from "./reducers/todoReducer";
+
 import "./App.css";
 
 function App() {
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+
   return (
     <div className="App">
-      <Todo />
-      <TodoForm />
+      <h1>Todo List: </h1>
     </div>
   );
 }
