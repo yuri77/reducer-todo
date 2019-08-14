@@ -7,12 +7,16 @@ import "./App.scss";
 function App() {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  function addItem(task) {
-    dispatch({ type: "ADD_TASK", payload: task });
+  function addItem(todo) {
+    dispatch({ type: "ADD_TASK", payload: todo });
   }
 
-  function toggleItem(item) {
-    dispatch({ type: "TOGGLE", payload: item });
+  function toggleItem(todo) {
+    dispatch({ type: "TOGGLE", payload: todo });
+  }
+
+  function clearItem() {
+    dispatch({ type: "CLEAR_COMPLETED" });
   }
 
   console.log("App-state", state);
@@ -21,7 +25,7 @@ function App() {
     <div className="App">
       <h1>Todo List: </h1>
       <TodoForm addItem={addItem} />
-      <TodoList todos={state} toggle={toggleItem} />
+      <TodoList todos={state} toggle={toggleItem} clearItem={clearItem} />
     </div>
   );
 }
